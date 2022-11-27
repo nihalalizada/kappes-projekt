@@ -1,0 +1,40 @@
+version: '3'
+services:
+  www:
+    depends_on:
+      - db
+    build: #image war nicht genug, da mysqli nicht automatisch installiert deswegen Dockerfile erstellt
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - "./:/var/www/html" #sznc project dir with container web dir
+    ports:
+      - 8080:80
+      - 443:443 #future ssl traffic
+    networks:
+      - lamp-docker
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=php_docker
+      - MYSQL_USER=user #Username
+      - MYSQL_PASSWORD=test #password
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d" #speichern der Einträge
+    networks:
+      - lamp-docker
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 9001:80 #:9001 myphp login page aufrufbar
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    networks:
+      - lamp-docker
+networks:
+  lamp-docker:
+    driver: bridge
