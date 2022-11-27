@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-    <link rel="stylesheet" href="style.scss">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-<?php
- include ("php.php");
- ?>
     <main class="container">
         <h2>Login</h2>
         <form action="">
@@ -28,7 +25,8 @@
         </form>
 
         <div class="footer">
-           
+            
+           {{ result }}
             </div>
         </div>
     </main>
