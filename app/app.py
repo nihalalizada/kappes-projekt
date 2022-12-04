@@ -3,7 +3,7 @@ from flask import Flask, render_template
 import mysql.connector
 import json
 
-app = Flask(__name__, template_folder='/app/templates')
+app = Flask(__name__, template_folder='/example/templates')
 
 
 def users() -> List[Dict]:
