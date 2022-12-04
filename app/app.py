@@ -3,7 +3,7 @@ from flask import Flask, render_template
 import mysql.connector
 import json
 
-app = Flask(__name__, template_folder='/example/templates')
+app = Flask(__name__)
 
 
 def users() -> List[Dict]:
@@ -25,8 +25,8 @@ def users() -> List[Dict]:
 
 
 @app.route('/')
-def index() -> str:
-    return json.dumps({'users': users()})
+def index() -> dict:
+    return {'users': users()}
 
 @app.route('/index.html')
 def home():
