@@ -1,2 +1,4 @@
-## Info Projekt - Evaluation of IT Security 2022
-- Demonstration of different IT Attacks
+# Simple Flask-Mysql with Docker
+
+## Running apps with docker
+`docker-compose up -d`
