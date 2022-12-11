@@ -33,14 +33,10 @@ def home():
        username = request.form["username"]
        password = request.form["password"]
   
-       if username =='test' & password == 'test':
-         return render_template('/loggedIn.html')
+       if username =='test' and password == 'test':
+         return render_template('loggedIn.html')
        
     return render_template('index.html', error=True)
     
-@app.route('/loggedIn.html', methods=['POST', 'GET'])
-def loggedIn():
-    return render_template('loggedIn.html', methods=['GET', 'POST'])
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
