@@ -1,43 +1,41 @@
 import http.server
 import socketserver
-import re
 import urllib.request
-import json
 
 class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     
     def do_GET(self):
-        # Forward the request to the destination server
+        # Request an Server schicken
         req = urllib.request.urlopen(self.path)
         self.send_response(req.getcode())
         self.end_headers()
         self.wfile.write(req.read())
 
     def do_POST(self):
-        # Read the request payload
+        # Payload Request lesen
         length = int(self.headers['Content-Length'])
         payload = self.rfile.read(length)
 
-         # Convert the payload from bytes into a dict object
+         # Payload von Byte in dict Object umwandeln
         payload = urllib.parse.parse_qs(payload)
         print(payload) 
 
-        # Manipulate the payload by changing the value of a specific field
-        payload[b'username'] = [b'test']
+        # payload maniplulieren
+        payload[b'username'] = [b'test'] #"b" - String lateral um binäre Daten zu repräsentaieren 
         payload[b'password'] = [b'test']
         print(payload) 
 
-        # Convert the payload back into bytes
+        # payload wieder in bytes umwandeln
         payload = urllib.parse.urlencode(payload, doseq=True).encode()
         
-        # Update the Content-Length header with the new length of the payload
+        # content-length updaten um Fehler password gleiche Länge zu vermieden
         self.headers['Content-Length'] = str(len(payload))
 
-         # Send the modified request to the destination server
+         # manipulierte Request wieder an Server schicken
         req = urllib.request.Request(self.path, data=payload, headers=self.headers, method="POST")
         res = urllib.request.urlopen(req)
 
-        # Forward the response from the destination server to the client
+        # antwort vom server an client schicken
         self.send_response(res.getcode())
         self.end_headers()
         self.wfile.write(res.read())
