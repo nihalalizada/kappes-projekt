@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/transfer.css') }}">
+    <title>Überweisung</title>
+	<body>
+		<div class="login">
+			<main class="container">
+				<h1>Überweisung</h1>
+				<div><br></div>
+			<div class="main">
+			<form action="/transfer.html" method="POST" autocomplete="off">
+				<div class="input-field">
+					<input type="text" name="name" id="name"
+						placeholder="Enter Name of Recipient">
+					<div class="underline"></div>
+				</div>
+				<div class="input-field">
+					<input type="text" name="iban" id="iban"
+						placeholder="Enter the IBAN">
+					<div class="underline"></div>
+				</div>
+				<div><br></div>
+				<div class="input-field">
+					<input type="text" name="amount" id="amount"
+						placeholder="Enter the amount">
+					<div class="underline"></div>
+				</div>
+				<div><br></div>
+				<div class="input-field">
+					<input type="text" name="purpose" id="purpose"
+						placeholder="Purpose of transfer">
+					<div class="underline"></div>
+				</div>
+				<div><br></div>
+				<div class="msg">{{ msg }}</div>
+				<input type="submit" value="Transfer">
+			</form>
+		</div>
+	</main>
+	</body>
+</html>

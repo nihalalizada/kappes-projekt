@@ -1,13 +1,16 @@
-CREATE DATABASE students;
-use students;
+CREATE DATABASE projekt;
+use projekt;
 
-CREATE TABLE users (
-  id VARCHAR(20),
-  name VARCHAR(10)
+CREATE TABLE accounts (
+  id VARCHAR(255),
+  name VARCHAR(255),
+  iban VARCHAR(255),
+  amount VARCHAR(255),
+  purpose VARCHAR(255)
 );
 
-INSERT INTO users
-  (id, name)
+INSERT INTO accounts
+  (id, name, iban, amount, purpose)
 VALUES
-  ('1', 'Nihal'),
-  ('2', 'r00t');
+  ('1', 'Nihal', 'DE12345xxx', '599', 'Miete'),
+  ('2', 'r00t', 'DE12345xxx', '199', 'Versicherung');
