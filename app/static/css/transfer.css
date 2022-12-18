@@ -6,9 +6,12 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 } 
+.msg {
+    color: rgba(163, 27, 27, 0.7);
+}
 
  .login {
-    background: rgb(210, 201, 212);
+	background: rgb(210, 201, 212);
     background-repeat: no-repeat;
     min-height: 100vh;
     min-width: 100vw;
@@ -16,9 +19,6 @@
     align-items: center;
     justify-content: center; 
 } 
-.msg {
-    color: rgba(163, 27, 27, 0.7);
-}
  main.container {
     background: white;
     min-width: 320px;

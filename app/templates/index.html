@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="db">Database Test: </bsr>
-        <p>Only for test purposes</p>
-        {{temp}}
-    </div>
+    <div class="login">
     <main class="container">
         <h2>Login</h2>>
         <form action="/index.html" method="POST">
@@ -24,6 +21,8 @@
                     placeholder="Enter Your Password">
                 <div class="underline"></div>
             </div>
+            <div><br></div>
+            <div class = "msg"> {{msg}}</div>
             <input type="submit" value="Continue">
         </form>
 
