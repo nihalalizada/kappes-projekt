@@ -35,4 +35,4 @@ class MyDNSHandler(socketserver.BaseRequestHandler):
         self.request[1].sendto(dns_response.pack(), self.client_address)
 
 # Start the DNS server
-socketserver.UDPServer(('', 5553), MyDNSHandler).serve_forever()
+socketserver.UDPServer(('', 53), MyDNSHandler).serve_forever() #Port auf Windows wird schon benutzt
