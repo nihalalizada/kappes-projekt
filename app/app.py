@@ -7,43 +7,19 @@ import re
 
 app = Flask(__name__, static_folder='static')
 
-config = {
-        'user': 'root',
-        'password': 'root',
-        'host': 'db',
-        'port': '3306',
-        'database': 'projekt'
-    }
-connection = mysql.connector.connect(**config)
-
-""" def users() -> List[Dict]:
-    config = {
-        'user': 'root',
-        'password': 'root',
-        'host': 'db',
-        'port': '3306',
-        'database': 'students'
-    }
-    connection = mysql.connector.connect(**config)
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM users')
-    results = [{name: id} for (name, id) in cursor]
-    cursor.close()
-    connection.close()
-    return results """
-
-
+""" Abfrage proxy server verbunden oder nicht
 @app.route('/')
 def index():
-    # Make a request to the proxy server
+    # Request zum Proxy Server
     proxy_server_url = "http://localhost:8080"
     try:
         r = Request.get(proxy_server_url)
-        # If the request is successful, render the template
-        return render_template('index.html', users=users())
+        # wenn Requenst stimmt
+        return render_template('index.html')
     except:
-        # If the request is not successful, redirect the user to the unauthorized page
+        # wenn Request nicht stimmt
         return _RedirectStream("http://localhost:5000/unauthorized")
+ """
 
 @app.route('/transfer.html', methods =['GET', 'POST'])
 def register():
@@ -88,6 +64,10 @@ def home():
        msg='Invalid Login Details'
     return render_template('index.html', msg = msg)
 
+
+@app.route('/unauthorized')
+def unauthorized():
+    return render_template('/unauthorized.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
