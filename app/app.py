@@ -1,4 +1,3 @@
-from contextlib import _RedirectStream
 from typing import List, Dict
 from urllib.request import Request
 from flask import Flask, render_template, request
@@ -7,19 +6,6 @@ import re
 
 app = Flask(__name__, static_folder='static')
 
-""" Abfrage proxy server verbunden oder nicht
-@app.route('/')
-def index():
-    # Request zum Proxy Server
-    proxy_server_url = "http://localhost:8080"
-    try:
-        r = Request.get(proxy_server_url)
-        # wenn Requenst stimmt
-        return render_template('index.html')
-    except:
-        # wenn Request nicht stimmt
-        return _RedirectStream("http://localhost:5000/unauthorized")
- """
 
 @app.route('/transfer.html', methods =['GET', 'POST'])
 def register():
@@ -52,8 +38,36 @@ def register():
         msg = 'Please fill out the form !'
         return render_template('transfer.html', msg=msg)
 
-@app.route('/index.html', methods=['POST', 'GET'])
+#Start Seite
+@app.route('/')
 def home():
+    return render_template('home.html')
+
+#Verarbeiten der Entscheidung des users
+@app.route('/redirect', methods=['POST'])
+def redirect():
+    choice = request.form['choice']
+    if choice == 'index':
+        return render_template('/index.html')
+    else:
+        return render_template('/secureIndex.html')
+
+
+@app.route('/secureIndex.html', methods=['POST', 'GET'])
+def sIndex():
+    msg = ''
+    if request.method == "POST":
+       username = request.form["username"]
+       password = request.form["password"]
+  
+       if username =='test' and password == 'test':
+         return render_template('transfer.html')
+       msg='Invalid Login Details'
+    return render_template('secureIndex.html', msg = msg)
+
+
+@app.route('/index.html', methods=['POST', 'GET'])
+def index():
     msg = ''
     if request.method == "POST":
        username = request.form["username"]

@@ -40,5 +40,5 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(res.read())
 
-# Start the server
+# Start HTTP-Server & wartet auf Port 8080 Anfragen
 socketserver.TCPServer(('', 8080), MyHTTPRequestHandler).serve_forever()
