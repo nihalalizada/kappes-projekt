@@ -4,7 +4,7 @@ import time
 import os
 import sys
 
-##### ip forwarding aktivieren: sudo sysctl -w net.inet.ip.forwarding=1
+##### ip forwarding aktivieren: sudo sysctl -w net.inet.ip.forwarding=1 
 
 def get_mac(ip):
     """
