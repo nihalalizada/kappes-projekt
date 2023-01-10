@@ -78,7 +78,7 @@ def index():
        msg='Invalid Login Details'
     return render_template('index.html', msg = msg)
 
-
+#Kann später auch raus
 @app.route('/unauthorized')
 def unauthorized():
     return render_template('/unauthorized.html')
