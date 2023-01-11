@@ -82,6 +82,10 @@ def index():
 @app.route('/unauthorized')
 def unauthorized():
     return render_template('/unauthorized.html')
+    
+@app.route('/schutz')
+def schutz():
+    return render_template('schutz.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
