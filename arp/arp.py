@@ -52,7 +52,7 @@ def restore(target_ip, host_ip, verbose=True):
     send(arp_response, verbose=0, count=7)
     if verbose:
         print("[+] Sent to {} : {} is-at {}".format(target_ip, host_ip, host_mac))
-kali
+#kali
 if __name__ == "__main__":
     # victim ip address
     target = "192.168.178.98"
