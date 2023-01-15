@@ -2,7 +2,7 @@ CREATE DATABASE projekt;
 use projekt;
 
 CREATE TABLE accounts (
-  id VARCHAR(255) PRIMARY KEY AUTO_INCREMENT,
+  id VARCHAR(255),
   name VARCHAR(255),
   iban VARCHAR(255),
   amount VARCHAR(255),
