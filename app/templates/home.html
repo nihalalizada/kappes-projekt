@@ -2,14 +2,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Optionen</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Informatik Projekt Demo</title>
   </head>
   <body>
-    <h1>Wähle eine Option:</h1>
-    <form method="POST" action="/redirect">
-        <input type="radio" name="choice" value="index">Choice 1<br>
-        <input type="radio" name="choice" value="secureIndex">Choice 2<br>
-        <input type="submit" value="Submit">
-    </form> 
+    <div class="login">
+      <main class = "container">
+        <h2>Informatik Projekt Demo</h2>
+        <div class="center">
+        <li><a href="index.html">Login</a></li>
+        <li><a href="secureIndex.html">Website with Certificates</a></li>
+        <li><a href="transfer.html">Bank Transfer Demo</a></li>
+        <li><a href="schutz">Schutzmechanismen</a></li>
+        <li><a href="arp">ARP Spoofing</a></li>
+      </div>
+    </div>
+  </main>
   </body>
 </html>
