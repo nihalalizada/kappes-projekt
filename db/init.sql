@@ -2,7 +2,7 @@ CREATE DATABASE projekt;
 use projekt;
 
 CREATE TABLE accounts (
-  id VARCHAR(255),
+  id INT  AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255),
   iban VARCHAR(255),
   amount VARCHAR(255),
@@ -10,7 +10,19 @@ CREATE TABLE accounts (
 );
 
 INSERT INTO accounts
-  (id, name, iban, amount, purpose)
+  (name, iban, amount, purpose)
 VALUES
-  ('1', 'Nihal', 'DE12345xxx', '599', 'Miete'),
-  ('2', 'r00t', 'DE12345xxx', '199', 'Versicherung');
+  ('Nihal', 'DE12345xxx', '599', 'Miete'),
+  ('r00t', 'DE12345xxx', '199', 'Versicherung');
+
+CREATE TABLE admins (
+  id INT  AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255),
+  password VARCHAR(255)
+);
+
+INSERT INTO admins
+(username, password) 
+VALUES
+('nihal','user'),
+('ali', 'admin');

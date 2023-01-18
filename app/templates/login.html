@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="home">Home</a></li>
+				<li><a href="about">About</a></li>
+				<li><a href="schutz">Schutzmechanismen</a></li>
+				<li><a href="">Test</a></li>
+          </ul>
+        </nav>
+      </header>
     <div class="login">
     <main class="container">
         <h2>Login</h2>
@@ -24,11 +34,11 @@
             <div><br></div>
             <div class = "msg"> {{msg}}</div>
             <input type="submit" value="Continue">
-        </form>
-
-        <div class="footer">
-            </div>
+        </form>  
         </div>
     </main>
+    <div class = "footer">
+        Footer - 2023 - Informatik Projekt - Creative Commons License
+        </div>
 </body>
 </html>

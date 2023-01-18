@@ -6,12 +6,22 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/transfer.css') }}">
     <title>Überweisung</title>
 	<body>
+		<header>
+			<nav>
+			  <ul>
+				<li><a href="">Home</a></li>
+				<li><a href="about">About</a></li>
+				<li><a href="schutz">Schutzmechanismen</a></li>
+				<li><a href="">Test</a></li>
+			  </ul>
+			</nav>
+		  </header>
 		<div class="login">
 			<main class="container">
 				<h1>Überweisung</h1>
 				<div><br></div>
 			<div class="main">
-			<form action="/transfer.html" method="POST" autocomplete="off">
+			<form action="/transfer" method="POST" autocomplete="off">
 				<div class="input-field">
 					<input type="text" name="name" id="name"
 						placeholder="Enter Name of Recipient">
@@ -40,5 +50,8 @@
 			</form>
 		</div>
 	</main>
+	<div class = "footer">
+        Footer - 2023 - Informatik Projekt - Creative Commons License
+        </div>
 	</body>
 </html>
