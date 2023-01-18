@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="home">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="schutz">Schutzmechanismen</a></li>
+            <li><a href="">Test</a></li>
+          </ul>
+        </nav>
+      </header>
+    <div class="login">
+    <main class="container">
+        <h2>Login</h2>
+        <form action="loginsecure" method="POST">
+            <div class="input-field">
+                <input type="text" name="username" id="username"
+                    placeholder="Enter Your Username">
+                <div class="underline"></div>
+            </div>
+            <div class="input-field">
+                <input type="password" name="password" id="password"
+                    placeholder="Enter Your Password">
+                <div class="underline"></div>
+            </div>
+            <div><br></div>
+            <div class = "msg"> {{msg}}</div>
+            <input type="submit" value="Continue">
+        </form>
+    </main>
+    <div class = "footer">
+        Footer - 2023 - Informatik Projekt - Creative Commons License
+        </div>  
+</body>
+</html>

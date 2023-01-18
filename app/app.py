@@ -1,9 +1,7 @@
-from typing import List, Dict
-from urllib.request import Request
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import mysql.connector
 import re
-
+import sys
 app = Flask(__name__, static_folder='static')
 config = {
         'user': 'root',
@@ -42,18 +40,8 @@ def register():
 def home():
     return render_template('home.html')
 
-#Verarbeiten der Entscheidung des users
-@app.route('/redirect', methods=['POST'])
-def redirect():
-    choice = request.form['choice']
-    if choice == 'index':
-        return render_template('/index.html')
-    else:
-        return render_template('/secureIndex.html')
-
-
-@app.route('/secureIndex', methods=['POST', 'GET'])
-def sIndex():
+@app.route('/login', methods=['POST', 'GET'])
+def login():
     msg = ''
     if request.method == "POST":
        username = request.form["username"]
@@ -66,30 +54,35 @@ def sIndex():
             return render_template('transfer.html')
        else:
             msg = 'Invalid Login Details'
-    return render_template('secureIndex.html', msg=msg)
+            
+    if request.is_secure:
+        return redirect("http://localhost:5000/login")
 
+    return render_template('login.html', msg = msg)
 
-@app.route('/index', methods=['POST', 'GET'])
-def index():
+@app.route('/loginsecure', methods=['POST', 'GET'])
+def loginsecure():
     msg = ''
     if request.method == "POST":
        username = request.form["username"]
        password = request.form["password"]
-  
+
        if username =='test' and password == 'test':
          return render_template('transfer.html')
        msg='Invalid Login Details'
-    return render_template('index.html', msg = msg)
 
-#Kann später auch raus
-@app.route('/unauthorized')
-def unauthorized():
-    return render_template('/unauthorized.html')
-    
+    if not request.is_secure:
+        return redirect("https://localhost:5001/loginsecure")
+
+    return render_template('securelogin.html', msg = msg)
+
+
 @app.route('/schutz')
 def schutz():
     return render_template('schutz.html')
 
 if __name__ == '__main__':
-    'app.run(host='0.0.0.0', port=5000, ssl_context=('certificate.pem', 'private_key.pem'))
-    app.run(host='0.0.0.0', port=5000)
+    if len(sys.argv) == 2:
+        app.run(host='0.0.0.0', port=5001, ssl_context=('certificate.pem', 'private_key.pem'))
+    else:
+        app.run(host='0.0.0.0', port=5000)
