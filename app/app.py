@@ -5,20 +5,19 @@ import mysql.connector
 import re
 
 app = Flask(__name__, static_folder='static')
-
-
-@app.route('/transfer.html', methods =['GET', 'POST'])
-def register():
-    config = {
+config = {
         'user': 'root',
         'password': 'root',
         'host': 'db',
         'port': '3306',
         'database': 'projekt'
     }
-    connection = mysql.connector.connect(**config)
+connection = mysql.connector.connect(**config)
+
+@app.route('/transfer', methods =['GET', 'POST'])
+def register():
+   
     cursor = connection.cursor()
-    
     if request.method == 'POST':
         name = request.form.get('name')
         iban = request.form.get('iban')
@@ -30,7 +29,7 @@ def register():
         if not re.match(r'^[A-Z]{2}(?:[ ]?[0-9]){18,20}$', iban):
             msg = 'Invalid IBAN!'
             return render_template('transfer.html', msg=msg)
-        cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s, %s)', (name, iban, amount, purpose))
+        cursor.execute('INSERT INTO accounts VALUES DEFAULT, %s, %s, %s, %s)', (name, iban, amount, purpose))
         connection.commit()
         msg = 'You have successfully transferred'
         return render_template('transfer.html', msg=msg)
@@ -53,20 +52,24 @@ def redirect():
         return render_template('/secureIndex.html')
 
 
-@app.route('/secureIndex.html', methods=['POST', 'GET'])
+@app.route('/secureIndex', methods=['POST', 'GET'])
 def sIndex():
     msg = ''
     if request.method == "POST":
        username = request.form["username"]
        password = request.form["password"]
-  
-       if username =='test' and password == 'test':
-         return render_template('transfer.html')
-       msg='Invalid Login Details'
-    return render_template('secureIndex.html', msg = msg)
+        
+       cursor = connection.cursor()
+       cursor.execute("SELECT * FROM admin WHERE username = %s AND password = %s", (username, password))
+       result = cursor.fetchone() 
+       if result:
+            return render_template('transfer.html')
+       else:
+            msg = 'Invalid Login Details'
+    return render_template('secureIndex.html', msg=msg)
 
 
-@app.route('/index.html', methods=['POST', 'GET'])
+@app.route('/index', methods=['POST', 'GET'])
 def index():
     msg = ''
     if request.method == "POST":
@@ -88,4 +91,5 @@ def schutz():
     return render_template('schutz.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    'app.run(host='0.0.0.0', port=5000, ssl_context=('certificate.pem', 'private_key.pem'))
+    app.run(host='0.0.0.0', port=5000)

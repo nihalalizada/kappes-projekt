@@ -86,3 +86,13 @@ form input[type="submit"] {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    text-align: center;
+}
