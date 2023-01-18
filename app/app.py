@@ -1,39 +1,40 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 import re
 import sys
+from config import config
+
 app = Flask(__name__, static_folder='static')
-config = {
-        'user': 'root',
-        'password': 'root',
-        'host': 'db',
-        'port': '3306',
-        'database': 'projekt'
-    }
-connection = mysql.connector.connect(**config)
+
 
 @app.route('/transfer', methods =['GET', 'POST'])
-def register():
-   
-    cursor = connection.cursor()
-    if request.method == 'POST':
-        name = request.form.get('name')
-        iban = request.form.get('iban')
-        amount = request.form.get('amount')
-        purpose = request.form.get('purpose')
-        if not name or not iban or not amount or not purpose:
-            msg = 'Please fill out the form!'
-            return render_template('transfer.html', msg=msg)
-        if not re.match(r'^[A-Z]{2}(?:[ ]?[0-9]){18,20}$', iban):
-            msg = 'Invalid IBAN!'
-            return render_template('transfer.html', msg=msg)
-        cursor.execute('INSERT INTO accounts VALUES DEFAULT, %s, %s, %s, %s)', (name, iban, amount, purpose))
-        connection.commit()
-        msg = 'You have successfully transferred'
-        return render_template('transfer.html', msg=msg)
-    else:
-        msg = 'Please fill out the form !'
-        return render_template('transfer.html', msg=msg)
+def transfer():
+  msg = ''
+  try:
+        connection = mysql.connector.connect(**config)
+        cursor = connection.cursor()
+        if request.method == 'POST':
+            name = request.form.get('name')
+            iban = request.form.get('iban')
+            amount = request.form.get('amount')
+            purpose = request.form.get('purpose')
+            if not name or not iban or not amount:
+                msg = 'Please fill out the form!'
+            elif not re.match(r'^[A-Z]{2}(?:[ ]?[0-9]){18,20}$', iban):
+                msg = 'Invalid IBAN!'
+            else:
+                cursor.execute('INSERT INTO accounts VALUES (DEFAULT, %s, %s, %s, %s)', (name, iban, amount, purpose))
+                connection.commit()
+                msg = 'You have successfully transferred'
+  except mysql.connector.Error as error:
+        print("Failed to execute the Query".format(error))
+  finally:
+        if (connection.is_connected()):
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
+  return render_template('transfer.html', msg=msg)
+
 
 #Start Seite
 @app.route('/')
@@ -44,32 +45,52 @@ def home():
 def login():
     msg = ''
     if request.method == "POST":
-       username = request.form["username"]
-       password = request.form["password"]
-        
-       cursor = connection.cursor()
-       cursor.execute("SELECT * FROM admin WHERE username = %s AND password = %s", (username, password))
-       result = cursor.fetchone() 
-       if result:
-            return render_template('transfer.html')
-       else:
-            msg = 'Invalid Login Details'
-            
+        username = request.form["username"]
+        password = request.form["password"]
+        try:
+            connection = mysql.connector.connect(**config)
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM admins WHERE username = %s AND password = %s", (username, password))
+            result = cursor.fetchone() 
+            if result:
+                return redirect(url_for("transfer"))
+            else:
+                msg = 'Invalid Login Details'
+        except mysql.connector.Error as error:
+            print("Failed to fetch data from admin {}".format(error))
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("Connection is closed!")
+
     if request.is_secure:
         return redirect("http://localhost:5000/login")
-
-    return render_template('login.html', msg = msg)
+    else:
+        return render_template('login.html', msg=msg)
 
 @app.route('/loginsecure', methods=['POST', 'GET'])
 def loginsecure():
     msg = ''
     if request.method == "POST":
-       username = request.form["username"]
-       password = request.form["password"]
-
-       if username =='test' and password == 'test':
-         return render_template('transfer.html')
-       msg='Invalid Login Details'
+        username = request.form["username"]
+        password = request.form["password"]
+        try:
+            connection = mysql.connector.connect(**config)
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM admins WHERE username = %s AND password = %s", (username, password))
+            result = cursor.fetchone() 
+            if result:
+                return redirect(url_for("transfer"))
+            else:
+                msg = 'Invalid Login Details'
+        except mysql.connector.Error as error:
+            print("Failed to fetch data from admin {}".format(error))
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("Connection is closed!")
 
     if not request.is_secure:
         return redirect("https://localhost:5001/loginsecure")
