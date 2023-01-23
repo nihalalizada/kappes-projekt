@@ -1,11 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
-
 * {
   margin: 0;
   border: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+.container-c {
+  width: 80%;
+  margin: 150px auto;
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  background: #f2f2f2;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+p {
+  text-align: justify;
+  font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
 .login {
@@ -36,7 +67,6 @@ main h2 {
   margin-bottom: 2rem;
   position: relative;
 }
-
 
 form.login {
   display: flex;
@@ -85,12 +115,6 @@ form input[type="submit"] {
   transition: all 0.3s ease;
 }
 
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 .footer {
   position: fixed;
@@ -113,7 +137,7 @@ header {
 
 nav ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; 
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -126,9 +150,19 @@ nav ul li {
 
 nav ul li a {
   display: block;
-  padding: 10px 20px;
+  padding: 10px 10px;
   text-decoration: none;
   color: #f7f1f1;
+}
+nav ul li img {
+  width: 23px;
+  height: 23px;
+  margin-top: 3px;
+}
+nav ul li:last-child {
+  float: right; 
+  margin-left: auto; 
+  margin-right: 50px;
 }
 
 /* Style the tab */
@@ -140,7 +174,6 @@ nav ul li a {
   display: flex;
 }
 
-/* Style the buttons inside the tab */
 .tab button {
   background-color: inherit;
   float: left;
