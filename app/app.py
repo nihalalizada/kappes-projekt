@@ -105,6 +105,18 @@ def schutz():
 def proxy():
     return render_template('proxy.html')
 
+@app.route('/general')
+def general():
+    return render_template('general.html')
+
+@app.route('/tools')
+def tools():
+    return render_template('tools.html')
+
+@app.route('/arp')
+def arp():
+    return render_template('arp.html')
+
 if __name__ == '__main__':
     if len(sys.argv) == 2:
         app.run(host='0.0.0.0', port=5001, ssl_context=('certificate.pem', 'private_key.pem'))
