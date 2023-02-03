@@ -15,7 +15,6 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         length = int(self.headers['Content-Length'])
         payload = self.rfile.read(length)
 
-         # Payload umwandeln
         payload = urllib.parse.parse_qs(payload)
         print(payload)
 
@@ -29,10 +28,10 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         # payload wieder in bytes umwandeln
         payload = urllib.parse.urlencode(payload, doseq=True).encode()
         
-        # content-length updaten um den Fehler password gleicher Länge zu vermieden
+        # content-length updaten
         self.headers['Content-Length'] = str(len(payload))
 
-         # manipulierte Request wieder an Server schicken
+         # manipulierte Request
         req = urllib.request.Request(self.path, data=payload, headers=self.headers, method="POST")
         res = urllib.request.urlopen(req)
 

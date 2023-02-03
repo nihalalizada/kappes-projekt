@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='js/tabs.js')}}"></script>
 	  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Informatik Projekt Demo</title>
   </head>
@@ -11,9 +12,9 @@
       <nav>
         <ul>
           <li><a href="/">Home</a></li>
-				<li><a href="about">About</a></li>
-				<li><a href="schutz">Schutzmechanismen</a></li>
-				<li><a href="">Test</a></li>
+          <li><a href="general">Mitm</a></li>
+          <li><a href="tools">Tools</a></li>
+          <li><a href="schutz">Schutzmechanismen</a></li>
         <li><a href="https://github.com/nihalalizada/kappes-projekt" target="_blank"><img src="/static/img/github-logo.png" alt="GitHub"></a></li>
         </ul>
       </nav>
@@ -22,6 +23,15 @@
      <div class="container-c">
         <h1>Übersicht der verwendeten Tools</h1>
         <br>
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'Tab1')">Docker</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab2')">Virtual Box</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab3')">Wireshark</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab4')">Ettercap</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab5')">OpenSSL</button>
+        </div>
+    
+        <div id="Tab1" class="tabcontent">
         <h2>Docker</h2>
         <br>
         <p>
@@ -49,7 +59,9 @@
           Anwendungen. Dies hat sich zu einem Standard in der modernen Softwareentwicklung entwickelt und wird von einer wachsenden 
           Anzahl von Unternehmen und Organisationen weltweit eingesetzt.
         </p>
+        </div>
 
+        <div id="Tab2" class="tabcontent">
         <h2>Virtual Box</h2>
         <br>
         <p>
@@ -60,7 +72,9 @@
           Anwendungen. Dies ermöglicht es Benutzern, mehrere Betriebssysteme auf einem einzigen Computer zu testen und auszuführen, 
           ohne dass sie ihr tatsächliches Betriebssystem beeinträchtigen.
         </p>
+        </div>
 
+        <div id="Tab3" class="tabcontent">
         <h2>Wireshark</h2>
         <br>
         <p>
@@ -79,7 +93,9 @@
           ermöglichen, relevante Daten schnell zu finden. Es kann auch mit anderen Netzwerkanalysewerkzeugen integriert werden, 
           um eine umfassende Überwachung und Analyse des Netzwerkverkehrs zu ermöglichen.
         </p>
+        </div>
 
+        <div id="Tab4" class="tabcontent">
         <h2>Ettercap</h2>
         <br>
         <p>
@@ -97,7 +113,9 @@
           Allerdings sollte es beachtet werden, dass Ettercap für illegalen Zwecken missbraucht werden kann. Daher sollten Benutzer 
           sicherstellen, dass sie die entsprechenden rechtlichen und ethischen Richtlinien einhalten, wenn sie Ettercap verwenden.
         </p>
+        </div>
 
+        <div id="Tab5" class="tabcontent">
         <h2>OpenSSL</h2>
         <br>
         <p>
@@ -110,9 +128,10 @@
           von OpenSSL erstellt werden, sind jedoch nicht von allen Browsern und Betriebssystemen als vertrauenswürdig anerkannt, 
           daher müssen Benutzer möglicherweise eine Ausnahme hinzufügen, um die Verbindung herzustellen.  
         </p>
+        </div>
      </div>
-        <div class = "footer">
-            Footer - 2023 - Informatik Projekt - Creative Commons License
-            </div>  
+     <div class = "footer">
+      Informatik Projekt - Man in the Middle - Group Rom - 2023
+      </div>  
     </body>
   </html>

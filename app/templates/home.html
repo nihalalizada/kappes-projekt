@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='js/tabs.js')}}"></script>
 	  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Informatik Projekt Demo</title>
   </head>
@@ -11,14 +12,13 @@
       <nav>
         <ul>
           <li><a href="/">Home</a></li>
-				<li><a href="about">About</a></li>
-				<li><a href="schutz">Schutzmechanismen</a></li>
-				<li><a href="">Test</a></li>
-        <li><a href="https://github.com/nihalalizada/kappes-projekt" target="_blank"><img src="/static/img/github-logo.png" alt="GitHub"></a></li>
+      <li><a href="general">Mitm</a></li>
+      <li><a href="tools">Tools</a></li>
+              <li><a href="schutz">Schutzmechanismen</a></li>
+              <li><a href="https://github.com/nihalalizada/kappes-projekt" target="_blank"><img src="/static/img/github-logo.png" alt="GitHub"></a></li>
         </ul>
       </nav>
     </header>
-     </div>
     <div class="container-c">
       <h1>Informatik Projekt Demo</h1>
       <p> Willkommen auf unserer Website zu Man-in-the-Middle-Angriffen. Wir haben in unserem Semesterprojekt 
@@ -32,38 +32,48 @@
         über das Thema zu erfahren. Zusätzlich finden Sie Informationen über Maßnahmen zur Absicherung gegen 
         Man-in-the-Middle-Angriffe.
       </p>
-      <h1>Vorraussetzung</h1>
+      <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Tab1')">Vorraussetzung</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab2')">Informationen</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab3')">Szenarien</button>
+      </div>
+  
+      <div id="Tab1" class="tabcontent">
+      <h2>Vorraussetzung</h2>
+      <br>
       <p> 
         Um die Szenarien nutzen zu können, müssen folgende Tools installiert sein:
-         <br>
-         Virtual Box
-         <br>
-         Wireshark
-         <br>
-         Weiter Tools hinzufügen!
+         <li>Virtual Box</li>
+         <li>Wireshark</li>
+         <li>Python</li>
+         <li>Weiter Tools hinzufügen!!!!!</li>
          <br>
          Weitere Informationen zu den jeweiligen Tools finden Sie unter Information "Tools".
       </p>
-
-      <div class="center">
-        <div class="box">
-          <h2>Informationen </h2>
+      </div>
+      <div id="Tab2" class="tabcontent">
+       
+          <h2>Informationen</h2>
+          <br>
           <li><a href="general">Erklärung: Man in the Middle</a></li>
+          <br>
           <li><a href="schutz">Schutzmechanismen</a></li>
+          <br>
           <li><a href="tools">Tools</a></li>
-        </div>
-      
-        <div class="box">
-          <h2>Szenarios</h2>
-          <li><a href="proxy">Proxy Szenario</a></li>
-          <li><a href="arp">ARP Cache Poisoning</a></li>
-          <li><a href="">3 Demo</a></li>
-        </div>
+      </div>
 
+      <div id="Tab3" class="tabcontent">
+          <h2>Szenarios</h2>
+          <br>
+          <li><a href="proxy">Proxy Szenario</a></li>
+          <br>
+          <li><a href="arp">ARP Cache Poisoning</a></li>
+          <br>
+          <li><a href="">3 Demo</a></li>
       </div>
     </div>
-  <div class = "footer">
-    Footer - 2023 - Informatik Projekt - Creative Commons License
-    </div>  
+    <div class = "footer">
+      Informatik Projekt - Man in the Middle - Group Rom - 2023
+      </div>  
   </body>
 </html>

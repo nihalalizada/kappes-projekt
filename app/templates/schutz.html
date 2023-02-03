@@ -12,24 +12,24 @@
         <nav>
           <ul>
             <li><a href="/">Home</a></li>
-				<li><a href="about">About</a></li>
-				<li><a href="schutz">Schutzmechanismen</a></li>
-				<li><a href="">Test</a></li>
+				<li><a href="general">Mitm</a></li>
+				<li><a href="tools">Tools</a></li>
+        <li><a href="schutz">Schutzmechanismen</a></li>
         <li><a href="https://github.com/nihalalizada/kappes-projekt" target="_blank"><img src="/static/img/github-logo.png" alt="GitHub"></a></li>
           </ul>
         </nav>
       </header>
     <h1> Schutzmechanismen</h1>
-    <p> Hier werden wir die Schutmechanisem von Entwickler und Benutzer Prespektive erklären. <br> Was der Entwickler tun kann um die Angriffe möglichst 
-        effektiv zu verhindern <br> und was der Benutzer machen kann um sich zu schützen</p>
-    <main>
+    <div class="container-c">
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Tab1')">Entwickler Perspektive</button>
             <button class="tablinks" onclick="openTab(event, 'Tab2')">Benutzer Perspektive</button>
+            <button class="tablinks" onclick="openTab(event, 'Tab3')">Weitere Schutzmechanismen</button>
+            <button class="tablinks" onclick="openTab(event, 'Tab4')">SSL Zertifikate</button>
           </div>
       
           <div id="Tab1" class="tabcontent">
-            <h3>Entwickler Perspektive</h3>
+            <h2>Entwickler Perspektive</h2>
             <p>Der Entwickler kann folgende Mechanismen einbauen, um die Sicherheit zu erhöhen</p>
             <li> Überprüfung von Eingabedaten</li>
             <li> Rechteverwaltung</li>
@@ -38,16 +38,19 @@
           </div>
       
           <div id="Tab2" class="tabcontent">
-            <h3>Benutzer Perspektive</h3>
+            <h2>Benutzer Perspektive</h2>
             <p>Der Benutzer kann folgendes tun um die Authentizität einer Webseite zu prüfen</p>
             <li> Verschlüsselte Verbindung durch Zertifikate (Weiter unten genauer drauf eingegangen</li>
             <li> Malware (Andere Überschrift geben)</li>
             <li> Impressum / Datenschutzrichtlinie</li>
           </div>
     </main>
-    <h1> Weitere Schutzmechanismen </h1>
+    <div id="Tab3" class="tabcontent">
+    <h2> Weitere Schutzmechanismen </h2>
     <p>test</p>
-    <h1>SSL-Zertifikate</h1>
+    </div>
+    <div id="Tab4" class="tabcontent">
+    <h2>SSL-Zertifikate</h2>
     <br>
     <p>
       SSL-Zertifikate (Secure Socket Layer) sind digitale Zertifikate, die es einer Website ermöglichen, eine sichere Verbindung 
@@ -64,8 +67,10 @@
       <br><br>
       <!--Vielleicht ein link zu Wie erstellt man SSL Zertifikate?-->
     </p>
+  </div>
+    </div>
     <div class = "footer">
-        Footer - 2023 - Informatik Projekt - Creative Commons License
-        </div>
+      Informatik Projekt - Man in the Middle - Group Rom - 2023
+      </div> 
     </body>
 </html>
