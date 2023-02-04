@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='js/tabs.js')}}"></script>
+	  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Informatik Projekt Demo</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="general">Mitm</a></li>
+          <li><a href="tools">Tools</a></li>
+          <li><a href="schutz">Schutzmechanismen</a></li>
+        <li><a href="https://github.com/nihalalizada/kappes-projekt" target="_blank"><img src="/static/img/github-logo.png" alt="GitHub"></a></li>
+        </ul>
+      </nav>
+    </header>
+     </div>
+     <div class="container-c">
+        <h1>Proxy Server Szenario</h1>
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'Tab1')">Proxy Server</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab2')">Warum Proxy?</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab3')">Zweck der Demo</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab4')">Zertifikate</button>
+        </div>
+    
+        <div id="Tab1" class="tabcontent">
+          <h2>Proxy Server:</h2>
+          <br>
+          <p> Ein Proxy-Server ist ein Server, der als Middleman dient, um Anfragen von Clients an 
+            Server weiterzuleiten. <br> 
+            Es handelt sich hierbei um einen Server, der Anfragen für Inhalte, die über das Internet abgerufen werden sollen, entgegennimmt und weiterleitet. 
+            Die meisten Benutzer nutzen Proxy-Server für viele Zwecke wie zb Schutz der eigene Identität oder auch die Netzwerkleistung zu verbessern.
+            Es kann jedoch auch andere Gründe geben, warum Benutzer einen Proxy-Server verwenden, wie zum Beispiel den Zugriff auf 
+            Inhalte, die aufgrund geografischer oder anderer Einschränkungen sonst nicht zugänglich wären.<br>
+            Ein weiterer wichtiger Einsatzbereich von Proxy-Servern besteht darin, den Netzwerkverkehr zu überwachen und zu steuern. 
+            Durch die Verwendung eines Proxy-Servers können IT-Administratoren sicherstellen, dass keine unerwünschten Inhalte über 
+            das Netzwerk geladen werden und dass die Netzwerkleistung und -sicherheit optimiert werden. Darüber hinaus können 
+            Proxy-Server verwendet werden, um Daten zu komprimieren, Caching zu implementieren und die Authentifizierung und 
+            Autorisierung von Benutzern zu verwalten.
+            <br>
+            Es gibt verschiedene Arten von Proxy-Servern, wie z.B. Forward Proxy, Reverse Proxy oder Transparent Proxy
+          </p>
+        </div>
+        <div id="Tab2" class="tabcontent">
+          <h2>Warum Proxy-Server?</h2>
+          <br>
+        <p>Wir haben uns entschieden, einen Proxy-Server in unserem Szenario zu verwenden, da er uns die Möglichkeit bot, 
+          die Netzwerkkommunikation eines Benutzers zu überwachen und zu manipulieren. 
+          In unserem Fall war es wichtig, die POST- und GET-Anfragen des Benutzers abzufangen und zu verändern, 
+          um einen Man-in-the-Middle-Angriff durchzuführen.
+          <br>
+          Ein Proxy-Server dient als Vermittler zwischen dem Benutzer und dem Server, indem er Anfragen entgegennimmt und weiterleitet. 
+          Daher könnten wir durch die Verwendung eines Proxy-Servers die Netzwerkkommunikation des Benutzers 
+          überwachen und seine Anfragen abfangen, um sie zu manipulieren.
+          <br>
+          Darüber hinaus konnten wir durch die Verwendung eines Proxy-Servers auch sicherstellen, dass alle Daten, die zwischen 
+          dem Benutzer und dem Server ausgetauscht werden, über den Proxy-Server laufen und somit für uns zugänglich sind. 
+          Dadurch konnten wir die Daten des Benutzers auf geeignete Weise verändern, 
+          um den Man-in-the-Middle-Angriff auszuführen.
+        </p>
+        </div>
+        <div id="Tab3" class="tabcontent">
+        <h2>Was wollen wir damit zeigen?</h2>
+        <br>
+        <p>Mit unserem Szenario, bei dem wir einen Proxy-Server verwendet haben, zeigen wir auf, wie gefährlich ein 
+          Man-in-the-Middle-Angriff sein kann. Durch die Modifizierung der POST requests wird die Integrität verletzt, was zeigt, 
+          wie einfach es für einen Angreifer ist, die Netzwerkkommunikation eines Benutzers abzufangen und zu manipulieren. 
+          Wir wollen damit auf die Bedeutung von Informationssicherheit hinweisen und zeigen, wie wichtig es ist, sich gegen 
+          solche Angriffe zu schützen.
+          <br>
+          Unser Ziel ist es, Benutzern und Unternehmen zu verdeutlichen, dass Informationssicherheit eine entscheidende Rolle spielt,
+          um sicherzustellen, dass ihre Daten und ihre Kommunikation geschützt bleiben.
+        </p>
+        <br>
+        </div>
+        <div id="Tab4" class="tabcontent">
+          <h2>Warum sind Zertifikate wichtig?</h2>
+          <br>
+          <p>
+            Erklären warum wichtig für unser Szenario --Weiterleitung zu Zertifikate erstellen (Weitere HTML Page? Oder weiter unten auf dieser Seite?)
+          </p>
+        </div>
+        <br>
+        <div class="center">
+          <div class="box">
+            <h2>Szenario Durchführung </h2>
+            <br>
+            <li><a href="login">Login mit Http</a></li>
+            <br>
+            <li><a href="loginsecure">Login mit Https</a></li>
+            <br>
+          </div>
+          <div class = "footer">
+            Informatik Projekt - Man in the Middle - Group Rom - 2023
+            </div>  
+          </body>
+        </html>

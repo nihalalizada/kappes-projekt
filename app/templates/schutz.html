@@ -4,60 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <script src="{{ url_for('static', filename='js/tabs.js')}}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
+  </head>
 <body> 
     <header>
         <nav>
           <ul>
-            <li><a href="">Home</a></li>
-				<li><a href="about">About</a></li>
-				<li><a href="schutz">Schutzmechanismen</a></li>
-				<li><a href="">Test</a></li>
+            <li><a href="/">Home</a></li>
+				<li><a href="general">Mitm</a></li>
+				<li><a href="tools">Tools</a></li>
+        <li><a href="schutz">Schutzmechanismen</a></li>
+        <li><a href="https://github.com/nihalalizada/kappes-projekt" target="_blank"><img src="/static/img/github-logo.png" alt="GitHub"></a></li>
           </ul>
         </nav>
       </header>
     <h1> Schutzmechanismen</h1>
-    <p> Hier werden wir die Schutmechanisem von Entwickler und Benutzer Prespektive erklären. <br> Was der Entwickler tun kann um die Angriffe möglichst 
-        effektiv zu verhindern <br> und was der Benutzer machen kann um sich zu schützen</p>
-    <main>
+    <div class="container-c">
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Tab1')">Entwickler Perspektive</button>
             <button class="tablinks" onclick="openTab(event, 'Tab2')">Benutzer Perspektive</button>
+            <button class="tablinks" onclick="openTab(event, 'Tab3')">Weitere Schutzmechanismen</button>
+            <button class="tablinks" onclick="openTab(event, 'Tab4')">SSL Zertifikate</button>
           </div>
       
           <div id="Tab1" class="tabcontent">
-            <h3>Entwickler Perspektive</h3>
-            <p>Der Entwickler kann folgendes tun um die Seite sicherer zu gestalten</p>
-            <li> Punkt 1</li>
-            <li> Punkt 2</li>
+            <h2>Entwickler Perspektive</h2>
+            <p>Der Entwickler kann folgende Mechanismen einbauen, um die Sicherheit zu erhöhen</p>
+            <li> Überprüfung von Eingabedaten</li>
+            <li> Rechteverwaltung</li>
+            <li> Authentifizierung</li>
+            <li> Verschlüsselung</li>
           </div>
       
           <div id="Tab2" class="tabcontent">
-            <h3>Benutzer Perspektive</h3>
-            <p>Der Benutzer kann folgendes tun um sich vor Angriffe zu schützen</p>
-            <li> Punkt 1</li>
-            <li> Punkt 2</li>
+            <h2>Benutzer Perspektive</h2>
+            <p>Der Benutzer kann folgendes tun um die Authentizität einer Webseite zu prüfen</p>
+            <li> Verschlüsselte Verbindung durch Zertifikate (Weiter unten genauer drauf eingegangen</li>
+            <li> Malware (Andere Überschrift geben)</li>
+            <li> Impressum / Datenschutzrichtlinie</li>
           </div>
-          <script>
-            function openTab(evt, tabName) {
-              var i, tabcontent, tablinks;
-
-              tabcontent = document.getElementsByClassName("tabcontent");
-              for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-              }
-
-              tablinks = document.getElementsByClassName("tablinks");
-              for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace("active") }
-                document.getElementById(tabName).style.display = "block";
-                evt.currentTarget.className += " active";
-                }
-            </script>
     </main>
+    <div id="Tab3" class="tabcontent">
+    <h2> Weitere Schutzmechanismen </h2>
+    <p>test</p>
+    </div>
+    <div id="Tab4" class="tabcontent">
+    <h2>SSL-Zertifikate</h2>
+    <br>
+    <p>
+      SSL-Zertifikate (Secure Socket Layer) sind digitale Zertifikate, die es einer Website ermöglichen, eine sichere Verbindung 
+      mit dem Webbrowser ihres Benutzers aufzubauen. Sie werden hauptsächlich verwendet, um die Übertragung vertraulicher 
+      Informationen wie Kreditkartendaten oder persönliche Daten zu schützen.
+      <br>
+      Ein SSL-Zertifikat besteht aus einem öffentlichen Schlüssel, einem privaten Schlüssel und einer Reihe von Informationen 
+      über die Website und ihren Betreiber. Es wird von einer vertrauenswürdigen Zertifizierungsstelle ausgestellt, die die 
+      Identität der Website und ihres Betreibers überprüft hat.
+      <br>
+      Wenn eine Website ein gültiges SSL-Zertifikat verwendet, wird bei jeder Übertragung von Daten zwischen dem Benutzer 
+      und der Website eine verschlüsselte Verbindung hergestellt. Diese verschlüsselte Verbindung schützt die Übertragung 
+      von Daten vor Lauschangriffen und anderen Bedrohungen.
+      <br><br>
+      <!--Vielleicht ein link zu Wie erstellt man SSL Zertifikate?-->
+    </p>
+  </div>
+    </div>
     <div class = "footer">
-        Footer - 2023 - Informatik Projekt - Creative Commons License
-        </div>
+      Informatik Projekt - Man in the Middle - Group Rom - 2023
+      </div> 
     </body>
 </html>

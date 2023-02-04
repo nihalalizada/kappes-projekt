@@ -3,9 +3,9 @@ import mysql.connector
 import re
 import sys
 from config import config
+import socket
 
 app = Flask(__name__, static_folder='static')
-
 
 @app.route('/transfer', methods =['GET', 'POST'])
 def transfer():
@@ -91,16 +91,31 @@ def loginsecure():
                 cursor.close()
                 connection.close()
                 print("Connection is closed!")
-
+                  
     if not request.is_secure:
         return redirect("https://localhost:5001/loginsecure")
 
     return render_template('securelogin.html', msg = msg)
 
-
 @app.route('/schutz')
 def schutz():
     return render_template('schutz.html')
+
+@app.route('/proxy')
+def proxy():
+    return render_template('proxy.html')
+
+@app.route('/general')
+def general():
+    return render_template('general.html')
+
+@app.route('/tools')
+def tools():
+    return render_template('tools.html')
+
+@app.route('/arp')
+def arp():
+    return render_template('arp.html')
 
 if __name__ == '__main__':
     if len(sys.argv) == 2:

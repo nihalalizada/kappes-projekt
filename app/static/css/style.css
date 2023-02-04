@@ -1,161 +1,203 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
- *{
-    margin: 0;
-    border: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-} 
-
- .login {
-    background: rgb(210, 201, 212);
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-} 
-.msg {
-    color: rgba(163, 27, 27, 0.7);
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
- main.container {
-    background: white;
-    min-width: 320px;
-    min-height: 40vh;
-    padding: 2rem;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+.container-c {
+  width: 80%;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  background: #f2f2f2;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+p {
+  text-align: justify;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.login {
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.msg {
+  color: rgba(163, 27, 27, 0.7);
+}
+
+main.container {
+  background: white;
+  min-width: 320px;
+  min-height: 40vh;
+  padding: 2rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 
 main h2 {
-    font-weight: 600;
-    margin-bottom: 2rem;
-    position: relative;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-
 form.login {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-field {
-    position: relative;
+  position: relative;
 }
 
 form .input-field:first-child {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
+
 .input-field .underline::before {
-    content: '';
-    position: absolute;
-    height: 1px;
-    width: 100%;
-    bottom: -5px;
-    left: 0;
-    background: rgba(0, 0, 0, 0.2);
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  bottom: -5px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
 }
+
 .input-field input {
-    outline: none;
-    font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.7);
-    width: 100%;
+  outline: none;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.7);
+  width: 100%;
 }
 
 .input-field input::placeholder {
-    color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 form input[type="submit"] {
-    margin-top: 2rem;
-    padding: 0.4rem;
-    width: 100%;
-    background: linear-gradient(to left, #101010, #000000);
-    cursor: pointer;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 300;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+  margin-top: 2rem;
+  padding: 0.4rem;
+  width: 100%;
+  background: linear-gradient(to left, #101010, #000000);
+  cursor: pointer;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 300;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
- 
-.center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: space-between;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
 }
+
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #030303;
-  }
-  nav ul {
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  nav ul li {
-    display: inline-block;
-    padding: 0 5px; 
-  }
-  nav ul li a {
-    display: block;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #f7f1f1;
-  }
-      /* Style the tab */
-      .tab {
-        overflow: hidden;
-        border: 1px solid #ccc;
-        background-color: #f1f1f1;
-       justify-content: center;
-       display: flex;
-      }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #030303;
+}
 
-      /* Style the buttons inside the tab */
-      .tab button {
-        background-color: inherit;
-        float: left;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        padding: 14px 16px;
-        transition: 0.3s;
-        font-size: 17px;
-      }
+nav ul {
+  display: flex;
+  justify-content: flex-start; 
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
-      /* Change background color of buttons on hover */
-      .tab button:hover {
-        background-color: #ddd;
-      }
+nav ul li {
+  display: inline-block;
+  padding: 0 5px;
+}
 
-      /* Create an active/current tablink class */
-      .tab button.active {
-        background-color: #ccc;
-      }
+nav ul li a {
+  display: block;
+  padding: 10px 10px;
+  text-decoration: none;
+  color: #f7f1f1;
+}
+nav ul li img {
+  width: 23px;
+  height: 23px;
+  margin-top: 3px;
+}
+nav ul li:last-child {
+  float: right; 
+  margin-left: auto; 
+  margin-right: 50px;
+}
 
-      /* Style the tab content */
-      .tabcontent {
-        display: none;
-        padding: 6px 12px;
-        border: 1px solid #ccc;
-        border-top: none;
-      }
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  justify-content: center;
+  display: flex;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}

