@@ -17,8 +17,8 @@ if __name__ == "__main__":
    # target_ip = input("Victim IP Address? ")
    # gateway_mac = input("Gateway MAC Address? ")
    # gateway_ip = input("Gateway IP Address? ")
-    target_mac = "dc:a9:04:8a:bd:c5"
-    target_ip = "192.168.178.21"
+    target_mac = "08:00:27:1c:53:83"
+    target_ip = "192.168.178.99"
     gateway_mac = "3c:a6:2f:54:54:65"
     gateway_ip = "192.168.178.1"
     print("Starting Spoof, press CTRL+C to unspoof.")
