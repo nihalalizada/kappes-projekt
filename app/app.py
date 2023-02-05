@@ -12,29 +12,38 @@ def transfer():
   msg = ''
   try:
         connection = mysql.connector.connect(**config)
-        cursor = connection.cursor()
+        cursor = connection.cursor(prepared=True)
+
         if request.method == 'POST':
             name = request.form.get('name')
             iban = request.form.get('iban')
             amount = request.form.get('amount')
             purpose = request.form.get('purpose')
+
             if not name or not iban or not amount:
                 msg = 'Please fill out the form!'
+                
             elif not re.match(r'^[A-Z]{2}(?:[ ]?[0-9]){18,20}$', iban):
                 msg = 'Invalid IBAN!'
+
             else:
-                cursor.execute('INSERT INTO accounts VALUES (DEFAULT, %s, %s, %s, %s)', (name, iban, amount, purpose))
+                query = "INSERT INTO accounts VALUES (DEFAULT, %s, %s, %s, %s)"
+                cursor.execute(query, (name, iban, amount, purpose))
                 connection.commit()
+
                 msg = 'You have successfully transferred'
+
   except mysql.connector.Error as error:
         print("Failed to execute the Query".format(error))
+
   finally:
+        
         if (connection.is_connected()):
             cursor.close()
             connection.close()
             print("MySQL connection is closed")
-  return render_template('transfer.html', msg=msg)
 
+  return render_template('transfer.html', msg=msg)
 
 #Start Seite
 @app.route('/home')
@@ -44,20 +53,27 @@ def home():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     msg = ''
+
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+
         try:
             connection = mysql.connector.connect(**config)
-            cursor = connection.cursor()
-            cursor.execute("SELECT * FROM admins WHERE username = %s AND password = %s", (username, password))
-            result = cursor.fetchone() 
+            cursor = connection.cursor(prepared=True)
+            query = "SELECT * FROM admins WHERE username = %s AND password = %s"
+            cursor.execute(query, (username, password))
+            result = cursor.fetchone()
+
             if result:
                 return redirect(url_for("transfer"))
+            
             else:
                 msg = 'Invalid Login Details'
+
         except mysql.connector.Error as error:
             print("Failed to fetch data from admin {}".format(error))
+
         finally:
             if (connection.is_connected()):
                 cursor.close()
@@ -66,26 +82,34 @@ def login():
 
     if request.is_secure:
         return redirect("http://localhost:5000/login")
+
     else:
         return render_template('login.html', msg=msg)
 
 @app.route('/loginsecure', methods=['POST', 'GET'])
 def loginsecure():
     msg = ''
+
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+
         try:
-            connection = mysql.connector.connect(**config)
-            cursor = connection.cursor()
-            cursor.execute("SELECT * FROM admins WHERE username = %s AND password = %s", (username, password))
-            result = cursor.fetchone() 
-            if result:
+           connection = mysql.connector.connect(**config)
+           cursor = connection.cursor(prepared=True)
+           query = "SELECT * FROM admins WHERE username = %s AND password = %s"
+           cursor.execute(query, (username, password))
+           result = cursor.fetchone() 
+
+           if result:
                 return redirect(url_for("transfer"))
-            else:
+           
+           else:
                 msg = 'Invalid Login Details'
+
         except mysql.connector.Error as error:
             print("Failed to fetch data from admin {}".format(error))
+
         finally:
             if (connection.is_connected()):
                 cursor.close()
@@ -100,23 +124,29 @@ def loginsecure():
 @app.route('/', methods=['POST', 'GET'])
 def login_arp():
     msg = ''
+
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+
         try:
             connection = mysql.connector.connect(**config)
-            cursor = connection.cursor()
-            cursor.execute('INSERT INTO logins VALUES (DEFAULT, %s, %s)', (username, password))
-            print = 'Login fehlgeschlagen. Bitte versuchen Sie es später erneut.'
+            cursor = connection.cursor(prepared=True)
+            query = "INSERT INTO logins VALUES (DEFAULT, %s, %s)"
+            cursor.execute(query, (username, password))
+            connection.commit()
+            msg = 'Login fehlgeschlagen. Bitte versuchen Sie es später erneut.'
+
         except mysql.connector.Error as error:
             print("Failed{}".format(error))
+            
         finally:
             if (connection.is_connected()):
                 cursor.close()
                 connection.close()
                 print("Connection is closed!")
 
-    return render_template('login_arp.html')
+    return render_template('login_arp.html', msg=msg)
 
 @app.route('/schutz')
 def schutz():

