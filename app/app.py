@@ -106,8 +106,8 @@ def login_arp():
         try:
             connection = mysql.connector.connect(**config)
             cursor = connection.cursor()
-            cursor.execute('INSERT INTO logins VALUES (%s, %s)', (username, password))
-            msg = 'Login fehlgeschlagen. Bitte versuchen Sie es später erneut.'
+            cursor.execute('INSERT INTO logins VALUES (DEFAULT, %s, %s)', (username, password))
+            print = 'Login fehlgeschlagen. Bitte versuchen Sie es später erneut.'
         except mysql.connector.Error as error:
             print("Failed{}".format(error))
         finally:
