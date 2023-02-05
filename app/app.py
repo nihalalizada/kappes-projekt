@@ -116,7 +116,7 @@ def login_arp():
                 connection.close()
                 print("Connection is closed!")
 
-    return render_template('login_arp.html', msg=msg)
+    return render_template('login_arp.html')
 
 @app.route('/schutz')
 def schutz():
