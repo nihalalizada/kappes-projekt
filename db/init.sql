@@ -21,8 +21,15 @@ CREATE TABLE admins (
   password VARCHAR(255)
 );
 
+CREATE TABLE logins (
+  id INT  AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255),
+  password VARCHAR(255)
+);
+
 INSERT INTO admins
 (username, password) 
 VALUES
 ('nihal','user'),
-('ali', 'admin');
+('ali', 'admin'),
+('nik', 'user');

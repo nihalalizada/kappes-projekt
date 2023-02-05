@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script type = "text/javascript">  
-        function saveFile() {  
-           alert("yeee");  
-        }  
-    </script> 
 </head>
 <body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+				<li><a href="general">Mitm</a></li>
+				<li><a href="tools">Tools</a></li>
+                <li><a href="schutz">Schutzmechanismen</a></li>
+                <li><a href="https://github.com/nihalalizada/kappes-projekt" target="_blank"><img src="/static/img/github-logo.png" alt="GitHub"></a></li>
+          </ul>
+        </nav>
+      </header>
     <div class="login">
     <main class="container">
         <h2>Login</h2>
-        <form action="/index.html" method="POST">
+        <form action="/login" method="POST">
             <div class="input-field">
                 <input type="text" name="username" id="username"
                     placeholder="Enter Your Username">
@@ -27,14 +33,13 @@
                 <div class="underline"></div>
             </div>
             <div><br></div>
-            <div>
-                <input type="button" id="bt" value="Login" onclick="saveFile()" />
-            </div>
-        </form>
-
-        <div class="footer">
-            </div>
+            <div class = "msg"> {{msg}}</div>
+            <input type="submit" value="Continue">
+        </form>  
         </div>
     </main>
+    <div class = "footer">
+        Informatik Projekt - Man in the Middle - Group Rom - 2023
+        </div> 
 </body>
 </html>
