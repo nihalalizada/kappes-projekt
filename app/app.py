@@ -101,13 +101,14 @@ def loginsecure():
 def login_arp():
     msg = ''
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+        username = request.form['username']
+        password = request.form['password']
         try:
             connection = mysql.connector.connect(**config)
             cursor = connection.cursor()
-            cursor.execute('INSERT INTO logins VALUES (DEFAULT, %s, %s)', (username, password))
-            print = 'Login fehlgeschlagen. Bitte versuchen Sie es später erneut.'
+            cursor.execute('INSERT INTO logins VALUES (%s, %s)', (username, password))
+            connection.commit()
+            msg = 'Login fehlgeschlagen. Bitte versuchen Sie es später erneut.'
         except mysql.connector.Error as error:
             print("Failed{}".format(error))
         finally:
@@ -116,7 +117,7 @@ def login_arp():
                 connection.close()
                 print("Connection is closed!")
 
-    return render_template('login_arp.html')
+    return render_template('login_arp.html', msg = msg)
 
 @app.route('/schutz')
 def schutz():
@@ -142,4 +143,4 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         app.run(host='0.0.0.0', port=5001, ssl_context=('certificate.pem', 'private_key.pem'))
     else:
-        app.run(host='0.0.0.0', port=5000)
+        app.run(host='0.0.0.0', port=80)
