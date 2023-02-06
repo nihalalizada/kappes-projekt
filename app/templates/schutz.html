@@ -30,25 +30,139 @@
       
           <div id="Tab1" class="tabcontent">
             <h2>Entwickler Perspektive</h2>
-            <p>Der Entwickler kann folgende Mechanismen einbauen, um die Sicherheit zu erhöhen</p>
-            <li> Überprüfung von Eingabedaten</li>
-            <li> Rechteverwaltung</li>
-            <li> Authentifizierung</li>
-            <li> Verschlüsselung</li>
+            <br>
+            <p>Der Entwickler kann folgende Mechanismen einbauen, um die Sicherheit vor Man-in-the-Middle Attacken zu erhöhen:</p>
+            <li> Validation von Eingabedaten</li>
+            <li> Verwendung des HTTPS-Protokolls</li>
+            <li> Validierung von Zertifikaten</li>
+            <li> Implementierung einer Passwortrichtlinie</li>
+            
+            <br>
+            <h3>Validation von Eingabedaten</h3>
+            <br>
+            <p>
+              Überprüfen Sie alle Eingabedaten auf die Webseite, um sicherzustellen, dass sie gültig sind. Verwenden Sie 
+              Server-seitige Validierung, um sicherzustellen, dass Daten korrekt formatiert sind und keine Bedrohungen enthalten.
+            </p>
+
+            <br>
+            <h3>Verwendung des HTTPS-Protokolls</h3>
+            <br>
+            <p>
+              HTTPS (Hypertext Transfer Protocol Secure) ist ein Protokoll, das über HTTP aufgebaut ist und zusätzlich eine 
+              Verschlüsselung für die Übertragung von Daten bereitstellt. Es wird durch ein SSL- oder TLS-Zertifikat bereitgestellt, 
+              das eine sichere Verbindung zwischen dem Benutzer und dem Server herstellt.
+              <br>
+              Wenn ein Benutzer auf eine Webseite zugreift, die über HTTPS verfügt, wird eine gesicherte Verbindung zwischen dem 
+              Browser und dem Server aufgebaut. Die Daten, die zwischen dem Benutzer und dem Server ausgetauscht werden, werden vor 
+              der Übertragung verschlüsselt und können von Dritten nicht abgefangen werden. 
+              <br>
+              Darüber hinaus gibt es einige zusätzliche Vorteile bei der Verwendung von HTTPS. So wird beispielsweise sichergestellt, 
+              dass der Benutzer tatsächlich auf die von ihm angeforderte Webseite zugreift und nicht auf eine gefälschte Webseite, 
+              die von einem Angreifer bereitgestellt wurde.
+            </p>
+
+            <br>
+            <h3>Validierung des benutzen Zertifikats</h3>
+            <br>
+            <p>
+              Überprüfen Sie das Zertifikat auf seine Gültigkeit, um sicherzustellen, dass es nicht manipuliert wurde.
+              <br>  
+              Ein Zertifikat kann auf seine Gültigkeit überprüft werden, indem man es mit einer vertrauenswürdigen 
+              Zertifizierungsstelle (CA) vergleicht. Die meisten Webbrowser und Betriebssysteme haben bereits eine Liste von 
+              vertrauenswürdigen CAs, die sie verwenden, um die Gültigkeit eines Zertifikats zu überprüfen. Wenn ein Zertifikat 
+              nicht von einer vertrauenswürdigen CA ausgestellt wurde, wird in der Regel eine Warnung angezeigt, dass das 
+              Zertifikat nicht vertrauenswürdig ist. 
+            </p>
+
+            <br>
+            <h3>Implementierung einer Passwortrichtlinie</h3>
+            <br>
+            <p>
+              Ein sicheres Passwort sollte aus einer Kombination aus Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen 
+              bestehen und regelmäßig geändert werden. Dadurch wird verhindert, dass bösartige Angreifer Zugang zu sensiblen 
+              Informationen erlangen, indem sie das Passwort erraten oder knacken. Eine strenge Passwortrichtlinie ist besonders 
+              wichtig für Systeme und Anwendungen, die sensibelen Daten speichern und verarbeiten.
+            </p>
           </div>
       
           <div id="Tab2" class="tabcontent">
             <h2>Benutzer Perspektive</h2>
-            <p>Der Benutzer kann folgendes tun um die Authentizität einer Webseite zu prüfen</p>
-            <li> Verschlüsselte Verbindung durch Zertifikate (Weiter unten genauer drauf eingegangen</li>
-            <li> Malware (Andere Überschrift geben)</li>
-            <li> Impressum / Datenschutzrichtlinie</li>
+            <br>  
+            <p>Der Benutzer kann folgendes tun um die Authentizität einer Webseite zu prüfen:</p>
+            <li> Überprüfen des SSL-Zertifikats</li>
+            <li> Überprüfung der URL</li>
+            <li> Überprüfung der Datenschutzrichtlinie</li>
+            
+            <br>
+            <h3>Überprüfen des SSL-Zertifikats</h3>
+            <br>
+            <p>
+              Eine gültige SSL-Verschlüsselung wird durch ein Schlosssymbol im Browser angezeigt. Durch Klicken auf das Symbol 
+              kann man Details zum Zertifikat einsehen, um zu überprüfen, ob es von einer vertrauenswürdigen Zertifizierungsstelle 
+              ausgestellt wurde.
+            </p>
+
+            <br>
+            <h3>Überprüfung der URL</h3>
+            <br>
+            <p>
+              Überprüfen Sie, ob die URL, die Sie aufrufen, mit der URL übereinstimmt, die Sie erwartet haben. Achten Sie auf 
+              ähnliche oder leicht abgewandelte URLs, die möglicherweise gefälscht sind.
+            </p>
+
+            <br>
+            <h3>Überprüfung der Datenschutzrichtlinie</h3>
+            <br>
+            <p>
+              Eine gründliche Überprüfung der Datenschutzrichtlinie kann Auskunft darüber geben, wie die Website mit 
+              persönlichen Daten umgeht. Dies schließt die Art und Weise ein, wie die Daten erhoben, gespeichert und verwendet 
+              werden. Es ist wichtig, dass die Datenschutzrichtlinie eindeutig formuliert ist und dass der Benutzer weiß, welche 
+              Daten gesammelt werden und wofür sie verwendet werden.
+              <br>
+              Wenn die Datenschutzrichtlinie unklare oder verdächtige Aussagen enthält, wie keine klare Beschreibung der Art 
+              der gesammelten Daten, keine Informationen darüber, wie lange die gesammelten Daten aufbewahrt werden 
+              oder keine Informationen darüber, wie Benutzer ihre Daten löschen oder ändern können, sollte man 
+              diese Website möglicherweise vermeiden oder eine Alternative in Betracht ziehen.
+            </p>
           </div>
     </main>
     <div id="Tab3" class="tabcontent">
     <h2> Weitere Schutzmechanismen </h2>
-    <p>test</p>
+    <br>
+    <li> Vermeidung von SQL-Injections</li>
+    <li> Zwei-Faktor-Authentifizierung</li>
+
+   <br>
+   <h3>Vermeidung von SQL-Injections</h3>
+   <br>
+   <p>
+    SQL-Injection ist eine Art von Cyberangriff, bei dem ein Angreifer bösartigen Code in ein Computersystem 
+    einschleust, indem er fehlerhafte oder unsichere SQL-Abfragen nutzt. Dies kann dazu führen, dass sensible 
+    Daten, wie Passwörter und Kreditkarteninformationen, gestohlen oder manipuliert werden. 
+    Um SQL-Injection-Angriffe abzuwehren, ist es wichtig, die Sicherheit der Datenbank und der Anwendung zu 
+    verbessern. Dazu gehört die Überprüfung von Eingabewerten, die Verwendung von Prepared Statements, die 
+    Verwendung von sicheren Passwörtern und die Überwachung von Datenbank-Aktivitäten. Es ist auch wichtig, 
+    regelmäßig Sicherheits-Audits durchzuführen, um Schwachstellen zu identifizieren und zu beheben.
+   </p>
+    <br>
+
+    <h3>Zwei-Faktor-Authentifizierung</h3>
+   <br>
+   <p>
+    Zweifache Authentifizierung (2FA) ist eine Methode zur Erhöhung der Sicherheit von Benutzerkonten. 
+    Dabei muss ein Benutzer nicht nur ein Passwort eingeben, sondern auch einen zusätzlichen 
+    Sicherheitsschlüssel bereitstellen, um Zugang zu seinem Konto zu erhalten. Dies kann ein physischer 
+    Sicherheitsschlüssel sein, der an einen Computer angeschlossen wird, oder ein Code, der per SMS oder 
+    Anwendung an ein Mobilgerät gesendet wird.
+    <br>
+    Durch die Verwendung von 2FA wird es für Angreifer schwieriger, auf ein Konto zuzugreifen, selbst wenn 
+    sie in den Besitz des Passworts gelangen. In vielen Fällen müssen Angreifer auch physischen Zugang zum 
+    zweiten Faktor haben, was die Sicherheit erhöht. Daher ist es für Websites empfehlenswert, 2FA für 
+    Benutzerkonten anzubieten.
+   </p>
     </div>
+
     <div id="Tab4" class="tabcontent">
     <h2>SSL-Zertifikate</h2>
     <br>
