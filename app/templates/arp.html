@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='js/tabs.js')}}"></script>
 	  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Informatik Projekt Demo</title>
   </head>
@@ -11,22 +12,83 @@
       <nav>
         <ul>
           <li><a href="/home">Home</a></li>
-      <li><a href="general">Mitm</a></li>
-      <li><a href="tools">Tools</a></li>
-              <li><a href="schutz">Schutzmechanismen</a></li>
-              <li><a href="https://github.com/nihalalizada/kappes-projekt" target="_blank"><img src="/static/img/github-logo.png" alt="GitHub"></a></li>
+          <li><a href="general">Mitm</a></li>
+          <li><a href="tools">Tools</a></li>
+          <li><a href="schutz">Schutzmechanismen</a></li>
+          <li><a href="https://github.com/nihalalizada/kappes-projekt" target="_blank"><img src="/static/img/github-logo.png" alt="GitHub"></a></li>
         </ul>
       </nav>
     </header>
      </div>
      <div class="container-c">
-        <h1>ARP Cache Poisoning</h1>
-        <p> Was ist der Angriff?</p>
-        <p> Ziel des Angriffs</p>
-        <p> Anleitung und Vorraussetzung</p>
-     </div>
-        <div class = "footer">
+        <h1>ARP Cache Poisoning Attack</h1>
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'Tab1')">Angriffsbeschreibung</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab2')">Sicherheitsmaßnahmen</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab3')">Voraussetzungen</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab4')">Durchführung</button>
+        </div>
+    
+        <div id="Tab1" class="tabcontent">
+          <h2>Angriffsbeschreibung</h2>
+          <br>
+          <p> Das Address Resolution Protocol (ARP) wird zur Identifikation von Geräten innerhalb eines Netzwerk genutzt.  
+            <br> 
+            Der Angriff bewirkt ein unbemerktes Eindringen in die Kommunikation zwischen einem Host und dem Gateway.
+            Ein Python Skript sendet kontinuierlich gefälschte ARP Pakete an ein Opfer und das Gateway und flutet so den ARP Cache Table.
+            Es resultiert eine Verletzung des IT Security Ziels Integrity. 
+            In Verbindung mit einem DNS Spoof werden vertrauliche Informationen (hier: Kontodaten) mitgelesen und unauthorisiert gespeichert.
+          </p>
+        </div>
+        <div id="Tab2" class="tabcontent">
+          <h2>Sicherheitsmaßnahmen</h2>
+          <br>
+          https only mode im Browser aktivieren
+          <br>
+          statischen Eintrag in ARP Table kreieren: sudo arp -s ip address mac address
+        <p>
+          
+        </p>
+        </div>
+        <div id="Tab3" class="tabcontent">
+        <h2>Voraussetzungen</h2>
+        <br>
+        <p>
+          - Docker
+          <br>
+          - Python3 mit Scapy Library
+          <br>
+          - IP Forwarding aktiviert (Mac OS: sudo sysctl -w net.inet.ip.forwarding=1)
+          <br>
+          - Ettercap installiert
+        </p>
+        <br>
+        </div>
+        <div id="Tab4" class="tabcontent">
+          <h2>Ablauf</h2>
+          <br>
+          <p>
+            - Webapp starten: docker-compose up -d
+            <br>
+            - Run arp.py, IP Adressen von Victim und Gateway angeben
+            <br>
+            - Ettercap Konfiguration:
+            <br>
+            - etter.conf: Aktivierung von redir_commands. (Zwei für IPv4, zwei für IPv6)
+            <br>
+            - etter.dns: Festlegen der Redirect Adressen für DNS Spoofing
+            <br>
+            - Ettercap starten: sudo ettercap -G 
+            <br>
+            - Target hinzufügen
+            <br>
+            - DNS Spoof Plugin aktivieren
+          </p>
+        </div>
+        <br>
+        <div class="center">
+          <div class = "footer">
             Informatik Projekt - Man in the Middle - Group Rom - 2023
             </div>  
-    </body>
-  </html>
+          </body>
+        </html>
