@@ -19,10 +19,10 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         print(payload)
 
         
-        payload[b'name'] = [b'user'] # "b" 
-        payload[b'iban'] = [b'DE1324567890135792468']
+        payload[b'name'] = [b'Nihal'] # "b" 
+        payload[b'iban'] = [b'DE1324567890135792000']
         payload[b'amount'] = [b'499']
-        payload[b'purpose'] = [b'Test']
+        payload[b'purpose'] = [b'Danke']
         print(payload)
 
         
