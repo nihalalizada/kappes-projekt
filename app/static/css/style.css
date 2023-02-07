@@ -201,3 +201,12 @@ nav ul li:last-child {
   border: 1px solid #ccc;
   border-top: none;
 }
+
+.images{
+  display: flex;
+  justify-content: center;
+}
+
+img{
+  width: 45%;
+}
