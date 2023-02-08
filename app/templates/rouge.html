@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='js/tabs.js')}}"></script>
+	  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Informatik Projekt Demo</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="general">Mitm</a></li>
+          <li><a href="tools">Tools</a></li>
+          <li><a href="schutz">Schutzmechanismen</a></li>
+          <li><a href="https://github.com/nihalalizada/kappes-projekt" target="_blank"><img src="/static/img/github-logo.png" alt="GitHub"></a></li>
+        </ul>
+      </nav>
+    </header>
+     </div>
+     <div class="container-c">
+        <h1>Rouge Access Point</h1>
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'Tab1')">Allgemeine Beschreibung</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab2')">Wichtige Befehle</button>
+          <button class="tablinks" onclick="openTab(event, 'Tab3')">Durchführung</button>
+        </div>
+    
+        <div id="Tab1" class="tabcontent">
+          <h2>Allgemeine Beschreibung</h2>
+          <br>
+          <p> In diesem Szenario stellt der Angreifer(wir) einen kostenlosen Zugangspunkt bereit,der ähnlich 
+            wie in öffentlichen Bereichen wie Cafés oder Bahnhöfen zugänglich ist. Durch die Verbindung mit 
+            diesem Zugangspunkt ermöglicht es dem Angreifer,den Datenverkehr zu lesen und möglicherweise 
+            sensibles Informationen zu stehlen, indem er auf eine gefälschte Website weiterleitet. Dies kann 
+            als ein "Rogue Access Point" Angriff beschrieben werden.           
+          </p>
+        </div>
+
+        <div id="Tab2" class="tabcontent">
+        <h2>Wichtige Befehle</h2>
+        <br>
+        <p>
+            "create_ap" Befehl: Dieser Befehl wird verwendet, um den freien Zugangspunkt in der Kali Linux-Virtualisierung zu erstellen.
+            <br><br>
+            Nginx-Webserver: Dieser Webserver wird verwendet, um die falsche Website bereitzustellen.
+            <br><br>
+            tcpdump-Kommando: Mit diesem Kommando kann man den Verkehr auf der Schnittstelle "wlan0" überwachen und analysieren.
+            <br><br>
+            "iptables" Befehl: Dieser Befehl wird verwendet, um die Verbindung des Victims von seinem Ziel zu einer anderen IP-Adresse (in diesem Fall die falsche Website) umzuleiten.
+            <br><br>
+            "-t nat" Option: Diese Option gibt an, dass die Umlenkung mit einer Netzwerk-Adress-Übersetzung (NAT) erfolgt.
+            <br><br>
+            "-A PREROUTING" Option: Diese Option gibt an, dass die Umlenkung vor der Weiterleitung durchgeführt wird.
+            <br><br>
+            "-i wlan0" Option: Diese Option gibt die Schnittstelle "wlan0" an, auf der der Verkehr geschnüffelt wird.
+            <br><br>
+            "-p tcp" Option: Diese Option gibt den Protokolltyp "TCP" an, über den der Verkehr übertragen wird.
+            <br><br>
+            "--dport 80" Option: Diese Option gibt den Ziel-Port "80" an, der für HTTP-Verkehr verwendet wird.
+            <br><br>
+            "-j DNAT" Option: Diese Option gibt an, dass die Umlenkung mit einer Adress-Übersetzung (DNAT) durchgeführt wird.
+            <br><br>
+            "--to-destination 192.168.178.187:80" Option: Diese Option gibt die Ziel-IP-Adresse und -Port (192.168.178.187:80) an, zu der der Verkehr umgeleitet wird
+        </div>    
+        </p>
+        <div id="Tab3" class="tabcontent">
+          <h2>Durchführung</h2>
+          <br>
+          <p>
+            Ziel: Überwachung und Analyse des Verkehrs auf einem freien Zugangspunkt sowie Abfangen und Klauen von Benutzerdaten über eine falsche Website.
+            <br><br>
+            Tools und Befehle:
+            <br>
+            a. create_ap: Ein Befehl, mit dem ein freier Zugangspunkt erstellt wird.
+            <br>
+            b. Nginx-Webserver: Ein Webserver, der die falsche Website bereitstellt.
+            <br>
+            c. HTML- und PHP-Datei: Die Dateien, die die falsche Website darstellen.
+            <br>
+            d. tcpdump: Ein Kommando, das zur Überwachung des Verkehrs auf einer Schnittstelle verwendet wird.
+            <br>
+            e. sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 192.168.178.187:80: Ein Befehl, der die Verbindungen der Benutzer zur falschen Website umleitet.
+            <br><br>
+            Funktionsweise:
+            <br>
+            a. Erstellung eines freien Zugangspunkts mit create_ap
+            <br>
+            b. Bereitstellung einer falschen Website mit dem Nginx-Webserver
+            <br>
+            c. Überwachung des Verkehrs auf der Schnittstelle "wlan0" mit dem tcpdump-Kommando
+            <br>
+            d. Umleiten der Verbindungen der Benutzer zur falschen Website mit dem iptables-Befehl
+            <br>
+            e. Abfangen und Analyse der Benutzerdaten auf dem freien Zugangspunkt
+            <br><br>
+
+            Risiken:
+            <br>
+            a. Unbefugter Zugriff auf sensiblen Informationen der Benutzer
+            <br>
+            b. Missbrauch der Benutzerdaten
+            <br>
+            c. Beschädigung des Rufs und des Vertrauens in das Netzwerk
+          </p>
+        </div>
+    </div>
+        <br>
+        <div class="center">
+          <div class = "footer">
+            Informatik Projekt - Man in the Middle - Group Rom - 2023
+            </div>  
+          </body>
+        </html>
