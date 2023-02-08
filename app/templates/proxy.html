@@ -79,10 +79,58 @@
         <br>
         </div>
         <div id="Tab4" class="tabcontent">
-          <h2>Warum sind Zertifikate wichtig?</h2>
+          <h2>Zertifikate</h2>
           <br>
           <p>
-            Erklären warum wichtig für unser Szenario --Weiterleitung zu Zertifikate erstellen (Weitere HTML Page? Oder weiter unten auf dieser Seite?)
+            SSL/TLS-Zertifikate sind wichtig, weil sie sicherstellen, dass das die Kommunikation und Datenübertragungen 
+            zwischen Websites und Benutzern geschützt sind.
+            <br>
+            Die Übertragung von Daten wird Verschlüsselt. Dies verhindert, dass Dritte die Übertragung mithören oder 
+            manipulieren können. Darüber hinaus garantiert ein gültiges Zertifikat, dass die Website, auf die der 
+            Benutzer zugreift, tatsächlich die ist, für die sie sich ausgibt.
+          </p>
+          <h2>Self-Signed Zertifikate</h2>
+          <br>
+          <p>
+            Self-signed Zertifikate werden oft in Entwicklungsumgebungen oder bei kleineren Unternehmen verwendet, die 
+            keine externe Zertifizierungsstelle benötigen. Diese Art von Zertifikat ist einfach zu erstellen und zu verwalten, 
+            da keine Überprüfung durch eine externe Zertifizierungsstelle erforderlich ist. Allerdings fehlt es ihnen an der 
+            Glaubwürdigkeit, die durch ein vertrauenswürdiges Zertifikat aus einer bekannten Zertifizierungsstelle 
+            gewährleistet wird. Daher kann es bei Benutzern eine Warnmeldung geben, die besagt, dass das Zertifikat nicht 
+            vertrauenswürdig ist. Es ist wichtig zu beachten, dass self-signed Zertifikate nicht für die Verwendung in einer 
+            produktionsbereiten Umgebung empfohlen werden, da sie ein erhöhtes Sicherheitsrisiko darstellen können.
+          </p>
+
+          <br>
+          <h2>Erstellung eines Self-Signed Zertifikats</h2>
+          <br>
+          <p>
+            Im folgenden werden die Schritte aufgezeigt wie man mit dem Tool OpenSSL Self-Signed Zertifikate erstellen kann und 
+            dadurch eine HTTPS Verbindung aufbauen kann.
+            <br><br>
+            1.Schritt: Privaten Schlüssel generieren
+            <br><br>
+            openssl genpkey -algorithm RSA -out private_key.pem -aes256
+            <br><br>
+            Dieser Befehl generiert einen RSA-basierten privaten Schlüssel, der in einer Datei mit dem 
+            Namen "private_key.pem" gespeichert wird.
+            <br><br>
+            2.Schritt: Certificate Signing Request (CSR) erstellen
+            <br><br>
+            openssl req -new -key private_key.pem -out certificate_req.csr
+            <br><br>
+            Die -new-Option wird verwendet, um eine neue CSR zu erstellen, während die -key-Option den privaten Schlüssel 
+            angeben muss, der für die CSR verwendet werden soll. Die Ausgabe der CSR wird in einer Datei mit dem Namen 
+            "certificate_req.csr" gespeichert.
+            <br><br>
+            3.Schritt: Erstellen des Zertifikats
+            <br><br>
+            openssl x509 -req -in certificate_req.csr -signkey private_key.pem -out certificate.pem -days 365
+            <br><br>
+            Der Command wird verwendet, um die Zertifikatanforderung (CSR) mit dem privaten Schlüssel (private_key.pem) 
+            zu signieren. Die Ausgabe wird in einer Datei mit dem Namen "certificate.pem" gespeichert. 
+            Der -days 365-Schalter gibt an, dass das Zertifikat für 365 Tage gültig ist.
+            <br><br>
           </p>
         </div>
         <br>
@@ -98,5 +146,5 @@
           <div class = "footer">
             Informatik Projekt - Man in the Middle - Group Rom - 2023
             </div>  
-          </body>
-        </html>
+  </body>
+</html>
