@@ -1,3 +1,5 @@
+## Autoren sind in den jeweiligen Funktionen vermerkt
+
 from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 import re
@@ -7,7 +9,7 @@ import socket
 
 app = Flask(__name__, static_folder='static')
 
-@app.route('/transfer', methods =['GET', 'POST'])
+@app.route('/transfer', methods =['GET', 'POST'])   ##Autor:
 def transfer():
   msg = ''
   try:
@@ -46,11 +48,11 @@ def transfer():
   return render_template('transfer.html', msg=msg)
 
 #Start Seite
-@app.route('/home')
+@app.route('/home')     ##Autor:
 def home():
     return render_template('home.html')
 
-@app.route('/login', methods=['POST', 'GET'])
+@app.route('/login', methods=['POST', 'GET']) ##Autor:
 def login():
     msg = ''
 
@@ -86,7 +88,7 @@ def login():
     else:
         return render_template('login.html', msg=msg)
 
-@app.route('/loginsecure', methods=['POST', 'GET'])
+@app.route('/loginsecure', methods=['POST', 'GET'])     ##Autor:
 def loginsecure():
     msg = ''
 
@@ -121,7 +123,7 @@ def loginsecure():
 
     return render_template('securelogin.html', msg = msg)
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['POST', 'GET']) ##Autor: Niklas Tögel
 def login_arp():
     msg = ''
 
@@ -145,27 +147,27 @@ def login_arp():
 
     return render_template('login_arp.html', msg = msg)
 
-@app.route('/schutz')
+@app.route('/schutz')       ##Autor:
 def schutz():
-    return render_template('schutz.html')
+    return render_template('schutz.html') 
 
-@app.route('/proxy')
+@app.route('/proxy')        ##Autor:
 def proxy():
     return render_template('proxy.html')
 
-@app.route('/general')
+@app.route('/general')      ##Autor:
 def general():
     return render_template('general.html')
 
-@app.route('/tools')
+@app.route('/tools')        ##Autor:
 def tools():
     return render_template('tools.html')
 
-@app.route('/arp')
+@app.route('/arp')          ##Autor:
 def arp():
     return render_template('arp.html')
 
-if __name__ == '__main__':
+if __name__ == '__main__':      ##Autor:
     if len(sys.argv) == 2:
         app.run(host='0.0.0.0', port=5001, ssl_context=('certificate.pem', 'private_key.pem'))
     else:

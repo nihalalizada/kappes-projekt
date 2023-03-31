@@ -1,3 +1,5 @@
+-- Autor:
+
 CREATE DATABASE projekt;
 use projekt;
 

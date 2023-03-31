@@ -1,3 +1,5 @@
+ //Autor:
+ 
  //JS Function for opening Tabs // 
  function openTab(evt, tabName) {
     
