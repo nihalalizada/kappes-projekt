@@ -9,7 +9,7 @@ import socket
 
 app = Flask(__name__, static_folder='static')
 
-@app.route('/transfer', methods =['GET', 'POST'])   ##Autor:
+@app.route('/transfer', methods =['GET', 'POST'])   ##Autor:Nihal Alizada
 def transfer():
   msg = ''
   try:
@@ -48,11 +48,11 @@ def transfer():
   return render_template('transfer.html', msg=msg)
 
 #Start Seite
-@app.route('/home')     ##Autor:
+@app.route('/home')     ##Autor:Ali Al-Haidary
 def home():
     return render_template('home.html')
 
-@app.route('/login', methods=['POST', 'GET']) ##Autor:
+@app.route('/login', methods=['POST', 'GET']) ##Autor:Nihal Alizada
 def login():
     msg = ''
 
@@ -88,7 +88,7 @@ def login():
     else:
         return render_template('login.html', msg=msg)
 
-@app.route('/loginsecure', methods=['POST', 'GET'])     ##Autor:
+@app.route('/loginsecure', methods=['POST', 'GET'])     ##Autor:Ali Al-Haidary
 def loginsecure():
     msg = ''
 
@@ -147,31 +147,31 @@ def login_arp():
 
     return render_template('login_arp.html', msg = msg)
 
-@app.route('/schutz')       ##Autor:
+@app.route('/schutz')       ##Autor:Ali Al-Haidary
 def schutz():
     return render_template('schutz.html') 
 
-@app.route('/proxy')        ##Autor:
+@app.route('/proxy')        ##Autor:Nihal Alizada
 def proxy():
     return render_template('proxy.html')
 
-@app.route('/general')      ##Autor:
+@app.route('/general')      ##Autor:Ali Al-Haidary
 def general():
     return render_template('general.html')
 
-@app.route('/tools')        ##Autor:
+@app.route('/tools')        ##Autor:Ali Al-Haidary
 def tools():
     return render_template('tools.html')
 
-@app.route('/arp')          ##Autor:
+@app.route('/arp')          ##Autor:Nihal Alizada
 def arp():
     return render_template('arp.html')
 
-@app.route('/rouge')        ##Autor:
+@app.route('/rouge')        ##Autor:Nihal Alizada
 def rouge():
     return render_template('rouge.html')
 
-if __name__ == '__main__':      ##Autor:
+if __name__ == '__main__':      ##Autor:Ali Al-Haidary, Nihal Alizada
     if len(sys.argv) == 2:
         app.run(host='0.0.0.0', port=5001, ssl_context=('certificate.pem', 'private_key.pem'))
     else:

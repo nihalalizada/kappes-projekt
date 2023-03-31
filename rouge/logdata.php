@@ -1,4 +1,4 @@
-
+<!-- Autor: Nouhaila Ben Messaou -->
 
 <?php
 $dir = "myDir";

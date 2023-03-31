@@ -1,4 +1,4 @@
--- Autor:
+-- Autor: Nihal Alizada
 
 CREATE DATABASE projekt;
 use projekt;

@@ -1,4 +1,4 @@
-## Autor:
+## Autor:Nihal Alizada, Ali Al-Haidary
 
 import http.server
 import socketserver

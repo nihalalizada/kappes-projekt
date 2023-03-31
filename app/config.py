@@ -1,4 +1,4 @@
-## Autor:
+## Autor: Nihal Alizada
 
 config = {
         'user': 'root',
